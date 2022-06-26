@@ -1,0 +1,29 @@
+Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+Microsoft.EntityFrameworkCore.Tools
+
+Microsoft.EntityFrameworkCore.SqlServer
+
+Microsoft.VisualStudio.Web.CodeGeneration
+
+Microsoft.VisualStudio.Web.CodeGeneration.Util
+
+Newtonsoft.Json
+System.Net.Http.Json
+
+
+Scaffold-DbContext "Data Source=LAPTOP-AHSIE6EV\SQLEXPRESS01;Initial Catalog=DBcollage;Integrated Security=True;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+,
+  "ConnectionStrings": {
+    "DBConnectionStrings": "Connection String;"
+  }
+
+
+services.AddDbContext<DICTDBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DBConnectionStrings")));
+
+
+
+ConfigurationBuilder confBuilder = new ConfigurationBuilder();
+                optionsBuilder.UseSqlServer(confBuilder.Build().GetSection("ConnectionStrings:DBConnectionStrings").Value);
